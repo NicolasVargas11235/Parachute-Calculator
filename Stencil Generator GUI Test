@@ -6,7 +6,7 @@ root = Tk()
 root.title("Stencil Generator")
 
 # Stencil Image Sidebar
-stencil_image = ImageTk.PhotoImage(Image.open("IMAGE PLACEHOLDER ADDRESS"))
+stencil_image = ImageTk.PhotoImage(Image.open("placeholder_stencil.png"))
 stencil = Label(root, image = stencil_image)
 stencil.grid(column = 0, row = 1)
 
