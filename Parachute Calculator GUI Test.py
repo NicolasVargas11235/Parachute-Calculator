@@ -28,7 +28,6 @@ def calculate_parachute():
     result_label.config(text=f"Required Parachute Size: {parachute_size:.2f} square meters")
 
 
-"""Main Script, Written by: Nicolas Vargas, Last Modified: 2023-10-28 by Jordan Trach"""
 # Create the main window
 root = tk.Tk()
 root.title("Parachute Calculator")
