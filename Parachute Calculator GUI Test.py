@@ -22,7 +22,7 @@ def calculate_parachute():
         return
 
     # Calculate parachute size (assuming projected area is a complete disk)
-    parachute_size = (mass * GRAVITY) / (drag_coefficient * AIR_DENSITY * velocity)
+    parachute_size = 2*(mass * GRAVITY) / (drag_coefficient * AIR_DENSITY * (velocity**2))
     
     # Update the result label
     result_label.config(text=f"Required Parachute Size: {parachute_size:.2f} square meters")
