@@ -1,14 +1,52 @@
 from tkinter import *
 from PIL import ImageTk, Image
+from PyDesmos import *
+import sympy
+
+
+area = 35.00
+hf = 'Terminal'
+bf = 'Fixedsys'
+bkgc = 'gray11'
+tbc = 'gray11'
+tc = 'palegreen2'
+
 
 # Create the main window
 root = Tk()
 root.title("Stencil Generator")
+root.configure(background = bkgc)
 
 # Stencil Image Sidebar
 stencil_image = ImageTk.PhotoImage(Image.open("placeholder_stencil.png"))
-stencil = Label(root, image = stencil_image)
-stencil.grid(column = 0, row = 1)
+stencil = Label(root, image = stencil_image, borderwidth = 1, relief = 'groove')
+stencil.grid(column = 0, row = 0, rowspan = 10)
+
+# Calculator sidebar
+# Header
+header = Label(root, text = "Parachute Stencil Generator", bg = tbc, fg = tc, font=(hf, 14), borderwidth = 1, relief = 'groove').grid(column = 1, row = 0, columnspan = 2, sticky = ('N','S','E','W'))
+
+area_str = StringVar()
+area_str.set(str(area))
+area_label = Label(root, text = "Area of the parachute:", font=(bf, 12), bg = bkgc, fg = tc, padx = 10).grid(column = 1, row = 1)
+area_input = Entry(root, textvariable = area_str, font=(bf, 12), bg = tbc, fg = tc).grid(column = 2, row = 1)
+
+#Place output for general measurements in rows 2-5
+
+#PyDesmos Generator output link should go just above the buttons in row 6
+
+#Hemispherical Generation
+hemispherical_generate_button = Button(root, text = "Generate Hemispherical Stencil in Desmos", font=(bf, 12), bg = tbc, fg = tc)
+hemispherical_generate_button.grid(column = 2, row = 7)
+
+#Biconical Generation
+biconical_generate_button = Button(root, text = "Generate Biconical Stencil in Desmos", font=(bf, 12), bg = tbc, fg = tc)
+biconical_generate_button.grid(column = 2, row = 8)
+
+#Triconical Generation
+triconical_generate_button = Button(root, text = "Generate Triconical Stencil in Desmos", font=(bf, 12), bg = tbc, fg = tc)
+triconical_generate_button.grid(column = 2, row = 9)
+
 
 # Start the GUI event loop
 root.mainloop()
