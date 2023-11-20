@@ -1,4 +1,5 @@
-import tkinter as tk
+from tkinter import *
+from math import *
 
 # Constants
 GRAVITY = 9.81
@@ -73,52 +74,46 @@ print ("The stensil base size should be: " + str(calculate_stencil_base_size(are
 print ("The stencil height size should be: " + str(calculate_stencil_height_size(area)))
 
 # Create the main window
-root = tk.Tk()
+root = Tk()
 root.title("Parachute Calculator")
+root.configure(background = bkgc)
 
 # Create and place title header
-header_frame = tk.Frame(root)
-header_frame['borderwidth'] = 5
-header_frame['height'] = 20
-header_frame.grid(column = 0, row = 0, columnspan = 15, sticky = (tk.E, tk.W))
-label_header = tk.Label(header_frame, text = "Parachute Calculator", bg = tbc, fg = tc, font=(hf, 14), borderwidth = 1, relief = 'groove')
-label_header.grid(column = 1, row = 0)
+header = Label(root, text = "Parachute Stencil Generator", bg = tbc, fg = tc, font=(hf, 14), borderwidth = 1, relief = 'groove').grid(column = 0, row = 0, columnspan = 10, sticky = ('N','S','E','W'))
+
 
 # Create and place sidebar for sought value
-seeking_header = tk.Label(root, text = "Which value do you need?")
+seeking_header = Label(root, text = "Which value do you need?", font=(bf, 12), bg = bkgc, fg = tc, padx = 10)
 seeking_header.grid(column = 0, row = 1, columnspan = 2, padx = 5, pady = 5)
 
 #Create and place value options (placeholders)
-parachute_size_button = tk.Button(root, text = "Parachute Size", font = (bf, 12), command=calculate_parachute)
-parachute_size_button.grid(column = 0, row = 2, sticky = (tk.N, tk.S, tk.E, tk.W))
+parachute_size_button = Button(root, text = "Parachute Size", font=(bf, 12), bg = tbc, fg = tc, command=calculate_parachute)
+parachute_size_button.grid(column = 0, row = 2, sticky = (E, W))
 
 # Create and place main entry window for given values
-given_frame = tk.Frame(root)
-given_frame['height'] = 20
-given_frame.grid(column = 2, row = 1, columnspan = 3, sticky = (tk.E, tk.W))
-given_header = tk.Label(root, text = "Enter known values:", font = (bf, 12))
+given_header = Label(root, text = "Enter known values:", font=(bf, 12), bg = bkgc, fg = tc)
 given_header.grid(column = 2, row = 1, columnspan = 5)
 
 # Create and place given values table
-entry_mass = tk.Entry(root)
+entry_mass = Entry(root, font=(bf, 12), bg = tbc, fg = tc)
 entry_mass.grid(column = 2, row = 2, ipadx = 5, padx = 5)
-label_mass = tk.Label(root, text="Load Mass (kg)", font = (bf, 12))
+label_mass = Label(root, text="Load Mass (kg)", font=(bf, 12), bg = tbc, fg = tc)
 label_mass.grid(column = 2, row = 3, ipadx = 5)
 
-entry_velocity = tk.Entry(root)
+entry_velocity = Entry(root, font=(bf, 12), bg = tbc, fg = tc)
 entry_velocity.grid(column = 3, row = 2, ipadx = 5, padx = 5)
-label_velocity = tk.Label(root, text="Descent Velocity (m/s)", font = (bf, 12))
+label_velocity = Label(root, text="Descent Velocity (m/s)", font=(bf, 12), bg = tbc, fg = tc)
 label_velocity.grid(column = 3, row = 3, ipadx = 5)
 
-entry_drag_coefficient = tk.Entry(root)
+entry_drag_coefficient = Entry(root, font=(bf, 12), bg = tbc, fg = tc)
 entry_drag_coefficient.grid(column = 4, row = 2, ipadx = 5, padx = 5)
-label_drag_coefficient = tk.Label(root, text="Drag Coefficient", font = (bf, 12))
+label_drag_coefficient = Label(root, text="Drag Coefficient", font=(bf, 12), bg = tbc, fg = tc)
 label_drag_coefficient.grid(column = 4, row = 3, ipadx = 5)
 
 # Create and place sidebar for results
-result_header = tk.Label(root, text = "Result", font = (hf, 14))
-result_header.grid(column = 5, row = 1, columnspan = 3, sticky = (tk.N, tk.S, tk.E, tk.W))
-result_label = tk.Label(root)
+result_header = Label(root, text = "Result", font=(bf, 12), bg = tbc, fg = tc)
+result_header.grid(column = 5, row = 1, columnspan = 3)
+result_label = Label(root, font=(bf, 12), bg = tbc, fg = tc)
 result_label.grid(column = 5, row = 2)
 
 # Start the GUI event loop
