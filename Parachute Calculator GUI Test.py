@@ -74,10 +74,9 @@ root.title("Parachute Calculator")
 # Create and place title header
 header_frame = ttk.Frame(root)
 header_frame['borderwidth'] = 5
-header_frame['relief'] = 'raised'
 header_frame['height'] = 20
 header_frame.grid(column = 0, row = 0, columnspan = 15, sticky = (tk.E, tk.W))
-label_header = tk.Label(header_frame, text = "Parachute Calculator", )
+label_header = tk.Label(header_frame, text = "Parachute Calculator", bg = tbc, fg = tc, font=(hf, 14), borderwidth = 1, relief = 'groove')
 label_header.grid(column = 1, row = 0)
 
 # Create and place sidebar for sought value
