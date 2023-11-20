@@ -3,6 +3,11 @@ import tkinter as tk
 # Constants
 GRAVITY = 9.81
 AIR_DENSITY = 1.204
+hf = 'Terminal'
+bf = 'Fixedsys'
+bkgc = 'gray11'
+tbc = 'gray11'
+tc = 'palegreen2'
 
 def calculate_parachute():
     """Caclulates the projected area of the parachute (hemisphere shape), 
