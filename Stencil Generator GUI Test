@@ -8,14 +8,17 @@ area = 35.00
 hf = 'Terminal'
 bf = 'Fixedsys'
 bkgc = 'gray11'
-tbc = 'gray11'
+tbc = bkgc
+ebc = 'gray17'
 tc = 'palegreen2'
-
 
 # Create the main window
 root = Tk()
 root.title("Stencil Generator")
 root.configure(background = bkgc)
+root.grid_columnconfigure(1, minsize=200)
+root.grid_columnconfigure(2, minsize=200)
+root.grid_columnconfigure(3, minsize=200)
 
 # Stencil Image Sidebar
 stencil_image = ImageTk.PhotoImage(Image.open("placeholder_stencil.png"))
@@ -24,29 +27,34 @@ stencil.grid(column = 0, row = 0, rowspan = 10)
 
 # Calculator sidebar
 # Header
-header = Label(root, text = "Parachute Stencil Generator", bg = tbc, fg = tc, font=(hf, 14), borderwidth = 1, relief = 'groove').grid(column = 1, row = 0, columnspan = 2, sticky = ('N','S','E','W'))
+header = Label(root, text = "Parachute Stencil Generator", bg = tbc, fg = tc, font=(hf, 14), borderwidth = 1, relief = 'groove').grid(column = 1, row = 0, columnspan = 3, sticky = ('N','S','E','W'))
 
 area_str = StringVar()
 area_str.set(str(area))
-area_label = Label(root, text = "Area of the parachute:", font=(bf, 12), bg = bkgc, fg = tc, padx = 10).grid(column = 1, row = 1)
-area_input = Entry(root, textvariable = area_str, font=(bf, 12), bg = tbc, fg = tc).grid(column = 2, row = 1)
+area_label = Label(root, text = "Area:", font=(bf, 12), bg = bkgc, fg = tc, padx = 10).grid(column = 1, row = 1)
+area_input = Entry(root, textvariable = area_str, font=(bf, 12), bg = ebc, fg = tc).grid(column = 2, row = 1, columnspan = 2)
+
+#Hemispherical Generation
+hemispherical_generate_button = Button(root, text = "Hemispherical", font=(bf, 12), bg = tbc, fg = tc)
+hemispherical_generate_button.grid(column = 1, row = 2)
+
+#Biconical Generation
+biconical_generate_button = Button(root, text = "Biconical", font=(bf, 12), bg = tbc, fg = tc)
+biconical_generate_button.grid(column = 2, row = 2)
+
+#Triconical Generation
+elliptical_generate_button = Button(root, text = "Elliptical", font=(bf, 12), bg = tbc, fg = tc)
+elliptical_generate_button.grid(column = 3, row = 2)
 
 #Place output for general measurements in rows 2-5
 
 #PyDesmos Generator output link should go just above the buttons in row 6
+desmos_str = StringVar()
+desmos_str.set('Generate a stencil to get a Desmos link')
+desmos_link_display = Entry(root, textvariable=desmos_str, font=(bf, 12), bg = ebc, fg = tc).grid(column = 1, row = 6, columnspan = 3, sticky = ('E', 'W'), padx = 10)
 
-#Hemispherical Generation
-hemispherical_generate_button = Button(root, text = "Generate Hemispherical Stencil in Desmos", font=(bf, 12), bg = tbc, fg = tc)
-hemispherical_generate_button.grid(column = 2, row = 7)
-
-#Biconical Generation
-biconical_generate_button = Button(root, text = "Generate Biconical Stencil in Desmos", font=(bf, 12), bg = tbc, fg = tc)
-biconical_generate_button.grid(column = 2, row = 8)
-
-#Triconical Generation
-triconical_generate_button = Button(root, text = "Generate Triconical Stencil in Desmos", font=(bf, 12), bg = tbc, fg = tc)
-triconical_generate_button.grid(column = 2, row = 9)
-
+desmos_generate_button = Button(root, text = "Generate in Desmos", font=(bf, 12), bg = tbc, fg = tc)
+desmos_generate_button.grid(column = 1, row = 7, columnspan = 3)
 
 # Start the GUI event loop
 root.mainloop()
